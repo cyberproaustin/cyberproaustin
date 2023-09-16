@@ -51,3 +51,4 @@ for result in results:
 
 # Calculate and print elapsed time
 end_time = time.time()
+print(end_time)
