@@ -51,4 +51,5 @@ for result in results:
 
 # Calculate and print elapsed time
 end_time = time.time()
-print(end_time)
+elapsed_time = end_time - start_time
+print(f"Total time taken: {elapsed_time:.2f} seconds")
