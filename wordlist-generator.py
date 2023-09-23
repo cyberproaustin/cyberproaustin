@@ -245,6 +245,14 @@ i_and_1_temp_file_name = file_name.replace('.txt', '_temp_i1.txt')
 with open(i_and_1_temp_file_name, 'w') as file:
     file.write('\n'.join(i_and_1_passwords))
 
+# Replace '0' with 'o' and 'O'
+o_and_0_passwords = [password.replace('o', '0').replace('O', '0') for password in combined_passwords]
+
+# Create a new temporary file with modified passwords
+o_and_0_temp_file_name = file_name.replace('.txt', '_temp_o0.txt')
+with open(o_and_0_temp_file_name, 'w') as file:
+    file.write('\n'.join(o_and_0_passwords))
+
 # Replace 'T' with '7'
 t_and_7_passwords = [password.replace('T', '7') for password in combined_passwords]
 
@@ -262,9 +270,9 @@ with open(s_and_5_temp_file_name, 'w') as file:
     file.write('\n'.join(s_and_5_passwords))
 
 # Replace 'A' with '4', 'a' with '@', 'B' with '8', 'E' with '3', 'e' with '3', 
-# 'I' with '1' (uppercase), 'l' with '1' (lowercase), 'T' with '7', 's' with '5' (lowercase), 'S' with '5' (uppercase)
+# 'I' with '1' (uppercase), 'l' with '1' (lowercase), 'T' with '7', 's' with '5' (lowercase), 'S' with '5' (uppercase), 'o' and 'O' with '0'
 combined_replacements_passwords = [password.replace('A', '4').replace('a', '@').replace('B', '8').replace('E', '3').replace('e', '3')
-                                  .replace('I', '1').replace('l', '1').replace('T', '7').replace('s', '5').replace('S', '5')
+                                  .replace('I', '1').replace('l', '1').replace('T', '7').replace('s', '5').replace('S', '5').replace('o', '0').replace('O', '0')
                                   for password in combined_passwords]
 
 # Create a new temporary file with modified passwords
@@ -286,6 +294,9 @@ with open(file_name, 'a') as file:
     with open(i_and_1_temp_file_name, 'r') as i1_file:
         file.write(i1_file.read())
 
+    with open(o_and_0_temp_file_name, 'r') as o0_file:
+        file.write(o0_file.read())
+
     with open(t_and_7_temp_file_name, 'r') as t7_file:
         file.write(t7_file.read())
 
@@ -296,7 +307,7 @@ with open(file_name, 'a') as file:
         file.write(combined_file.read())
 
 #Get the modified passwords
-modified_passwords = a_and_4_passwords + b_and_8_passwords + i_and_1_passwords + t_and_7_passwords + s_and_5_passwords + e_and_3_passwords + combined_replacements_passwords
+modified_passwords = a_and_4_passwords + b_and_8_passwords + i_and_1_passwords + t_and_7_passwords + s_and_5_passwords + e_and_3_passwords + o_and_0_passwords + combined_replacements_passwords
 
 # Remove duplicates
 unique_modified_passwords = modified_passwords
@@ -305,6 +316,7 @@ unique_modified_passwords = modified_passwords
 os.remove(a_and_4_temp_file_name)
 os.remove(b_and_8_temp_file_name)
 os.remove(i_and_1_temp_file_name)
+os.remove(o_and_0_temp_file_name)
 os.remove(t_and_7_temp_file_name)
 os.remove(s_and_5_temp_file_name)
 os.remove(e_and_3_temp_file_name)
