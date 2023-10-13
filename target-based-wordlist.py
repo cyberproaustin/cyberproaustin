@@ -1,3 +1,5 @@
+import os
+
 def get_significant_other_name():
     while True:
         significant_other_name = input("Enter the name of the target person's significant other (if applicable): ")
